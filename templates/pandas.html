@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            color: #111;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase; /* Makes heading uppercase */
+            font-weight: 900; /* Makes heading bold */
+            letter-spacing: 2px; /* Adds spacing between letters */
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            min-width: 65%;
+            background: rgba(255, 255, 255, 0.8); /* Glass effect */
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+        th {
+            padding: 14px 18px;
+            background: linear-gradient(135deg, #ffb6c1, #d291bc); /* soft pink to purple */
+            color: #fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #c48fb3;
+        }
+        td {
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            color: #4a235a;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(255, 230, 245, 0.6);
+        }
+        tr:hover {
+            background-color: rgba(255, 182, 193, 0.8);
+            color: white;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        a.button {
+            padding: 12px 24px;
+            background: #ff9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        a.button:hover {
+            transform: scale(1.05);
+            background: #e68900;
+        }
+        a.back { background: #4CAF50; }
+        a.back:hover { background: #3e8e41; }
+        a.bar { background: #2196F3; }
+        a.bar:hover { background: #1976D2; }
+        a.pie { background: #9C27B0; }
+        a.pie:hover { background: #7B1FA2; }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    {{ table | safe }}
+
+    <div class="button-container">
+        <a href="/" class="button back">← Back</a>
+        <a href="/bar" class="button bar">Bar Chart</a>
+        <a href="/pie" class="button pie">Pie Chart</a>
+    </div>
+</body>
+</html>

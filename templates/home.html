@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+
+  <!-- Google Fonts: Elegant Combo -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg1: #ff9a9e;
+      --bg2: #fad0c4;
+      --bg3: #a18cd1;
+      --glass: rgba(255, 255, 255, 0.08);
+      --card: rgba(255, 255, 255, 0.15);
+      --text: #222; /* Darker text */
+      --muted: rgba(34, 34, 34, 0.85); /* Darker muted */
+      --accent: #ff80ab;
+      --accentHover: #f06292;
+      --ring: 0 10px 30px rgba(255, 128, 171, 0.4);
+      --shadow: 0 24px 64px rgba(255, 128, 171, 0.15), 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 300% 300%;
+      animation: gradientMove 12s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      color: var(--text);
+      font-weight: 600; /* Make all text bold */
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1.5px solid var(--glass);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--text);
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 32px 80px rgba(255, 128, 171, 0.25);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 20%, #f48fb1, #ce93d8, #ba68c8);
+      box-shadow: 0 8px 30px rgba(255, 128, 171, 0.4);
+      border: 2px solid #ffffff22;
+    }
+    h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--text);
+    }
+    p {
+      margin: 0.45rem 0;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 24px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, var(--accent), #ba68c8 90%);
+      color: white;
+      font-weight: 700;
+      font-size: 17px;
+      border: none;
+      box-shadow: var(--ring);
+      transition: all 0.15s ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .cta:hover {
+      background: linear-gradient(90deg, var(--accentHover), #9c27b0 90%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .cta svg { width: 1.2em; height: 1.2em; }
+
+    .footer {
+      font-size: 13px;
+      color: var(--text);
+      text-align: center;
+      opacity: 0.85;
+      letter-spacing: 0.3px;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      text-align: left;
+    }
+    th {
+      color: var(--text);
+      font-weight: 700;
+    }
+    tr:hover td {
+      background: rgba(0, 0, 0, .05);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="header">
+        <a class="brand" href="/">
+          <div class="logo"></div>
+          <div>
+            <h1>{{ title }}</h1>
+            <div class="subtle">An elegant, modern start to your Flask app</div>
+          </div>
+        </a>
+        <a class="cta" href="{{ url_for('pandas') }}">
+          Next
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <p>Welcome! This homepage is your launchpad. Click <strong>Next</strong> to explore your dataset on the Pandas page, or customize this design to fit your project.</p>
+
+      {% if table %}
+      <h2 style="margin-top:16px;">📊 Quick Preview</h2>
+      <div>
+        {{ table | safe }}
+      </div>
+      {% endif %}
+    </section>
+
+    <div class="footer">
+      &copy; {{ title }} · Flask Demo — Designed with ❤️
+    </div>
+  </main>
+</body>
+</html>
